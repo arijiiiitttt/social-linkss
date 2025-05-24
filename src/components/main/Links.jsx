@@ -3,9 +3,9 @@ import {
   FaInstagram,
   FaGithub,
   FaLinkedin,
-  FaSun,
   FaMoon,
 } from 'react-icons/fa';
+import { CiCloudSun } from "react-icons/ci";
 import { RiMailSendLine } from 'react-icons/ri';
 import { FaUserGraduate } from "react-icons/fa6";
 
@@ -33,7 +33,8 @@ export default function Links() {
   const links = [
     {
       label: 'Portfolio',
-      href: '',
+      href: 'https://arijitportfolio-plum.vercel.app',
+      target: '_blank',
       image: '/logos/portfolio.png',
       description: 'My personal portfolio',
       video: '/videos/beacons.mp4',
@@ -83,7 +84,7 @@ export default function Links() {
     {
       label: 'Twitter',
       href: 'https://twitter.com',
-      image: '/images/twitter.png',
+      image: '/logos/twitter.png',
       description: 'Follow tech rants & thoughts',
       video: '/videos/twitter.mp4',
     },
@@ -124,48 +125,49 @@ export default function Links() {
   }, [theme]);
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${
-      theme === 'dark' ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'
-    }`}>
+    <div className={`min-h-screen transition-colors duration-300 ${theme === 'dark'
+        ? 'bg-black text-white'
+        : 'bg-gradient-to-br from-blue-50 to-amber-50 text-gray-900'
+      }`}>
       {/* Theme Toggle Button */}
       <button
         onClick={toggleTheme}
-        className={`fixed top-4 right-4 z-50 p-2 rounded-full ${
-          theme === 'dark' ? 'bg-gray-800 text-yellow-300' : 'bg-gray-200 text-gray-800'
-        }`}
+        className={`fixed top-4 right-4 z-50 p-2 rounded-full ${theme === 'dark' ? 'bg-gray-800 text-yellow-300' : 'bg-white text-gray-800 shadow-md'
+          }`}
         aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
       >
-        {theme === 'dark' ? <FaSun size={20} /> : <FaMoon size={20} />}
+        {theme === 'dark' ? <CiCloudSun size={25} /> : <FaMoon size={20} />}
       </button>
 
       {/* Cover + Profile */}
-<div className="relative">
-  {theme === 'dark' ? (
-    <img
-      src="/images/cover-dark.jpg"
-      alt="Dark Cover"
-      className="w-full h-40 object-cover"
-    />
-  ) : (
-    <img
-      src="/images/cover-light.jpg"
-      alt="Light Cover"
-      className="w-full h-40 object-cover"
-    />
-  )}
-  <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-12">
-    <img
-      src="/images/profile.jpg"
-      alt="Profile"
-      className="w-38 h-38 rounded-full border-4 border-black dark:border-white shadow-lg object-cover"
-    />
-  </div>
-</div>
+      <div className="relative">
+        {theme === 'dark' ? (
+          <img
+            src="/images/cover-dark.jpg"
+            alt="Dark Cover"
+            className="w-full h-40 object-cover"
+          />
+        ) : (
+          <img
+            src="/images/cover-light.jpg"
+            alt="Light Cover"
+            className="w-full h-40 object-cover"
+          />
+        )}
+        <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-12">
+          <img
+            src="/images/profile.jpg"
+            alt="Profile"
+            className="w-38 h-38 rounded-full border-4 border-black dark:border-white shadow-lg object-cover"
+          />
+        </div>
+      </div>
 
       {/* Content */}
       <div className="pt-20 px-4 flex flex-col items-center">
         <h1 className="text-2xl font-bold">@arijiiiiitttt</h1>
-        <p className={`mb-6 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+        <p className={`mb-6 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+          }`}>
           Development is my passion, not work 😎
         </p>
 
@@ -177,9 +179,8 @@ export default function Links() {
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`p-1 rounded-full transition duration-300 ${
-                theme === 'dark' ? 'hover:bg-white' : 'hover:bg-gray-200'
-              } ${item.hover}`}
+              className={`p-1 rounded-full transition duration-300 ${theme === 'dark' ? 'hover:bg-white' : 'hover:bg-gray-200'
+                } ${item.hover}`}
             >
               {item.icon}
             </a>
@@ -199,11 +200,11 @@ export default function Links() {
                 target="_blank"
                 rel="noopener noreferrer"
                 ref={ref}
-                className={`flex items-center gap-4 ${
-                  theme === 'dark' ? 'bg-gray-950 border-gray-700 hover:border-white' : 'bg-white border-gray-300 hover:border-gray-500'
-                } border p-5 rounded-full transition-all duration-300 transform hover:scale-105 ${
-                  visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
+                className={`flex items-center gap-4 ${theme === 'dark'
+                    ? 'bg-gray-950 border-gray-700 hover:border-white'
+                    : 'bg-white/80 border-gray-200 hover:border-gray-400 backdrop-blur-sm'
+                  } border p-5 rounded-full transition-all duration-300 transform hover:scale-105 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  } shadow-sm`}
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
               >
@@ -216,9 +217,8 @@ export default function Links() {
                 <div className="flex-1 flex justify-between items-center gap-4">
                   <div>
                     <h3 className="text-lg font-semibold">{link.label}</h3>
-                    <p className={`text-sm ${
-                      theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
-                    }`}>
+                    <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+                      }`}>
                       {link.description}
                     </p>
                   </div>
@@ -238,39 +238,38 @@ export default function Links() {
         </div>
 
         {/* Contact Section */}
-        <div className={`w-full max-w-lg mt-14 px-6 py-8 ${
-          theme === 'dark' ? 'bg-gray-950 border-gray-500 hover:shadow-white/10' : 'bg-white border-gray-300 hover:shadow-gray-400/10'
-        } border-2 border-dotted rounded-3xl shadow-lg transition-shadow duration-300`}>
+        <div className={`w-full max-w-lg mt-14 px-6 py-8 ${theme === 'dark'
+            ? 'bg-gray-950 border-gray-500 hover:shadow-white/10'
+            : 'bg-white/80 border-gray-300 hover:shadow-gray-400/10 backdrop-blur-sm'
+          } border-2 border-dotted rounded-3xl shadow-lg transition-shadow duration-300`}>
           <div className="flex items-center gap-3 mb-4">
             <RiMailSendLine className="text-3xl" />
             <h2 className="text-2xl font-bold">Let's Connect</h2>
           </div>
 
           {/* Contact Bar */}
-          <hr className={`border-t ${
-            theme === 'dark' ? 'border-white/30' : 'border-gray-300'
-          } mb-4`} />
+          <hr className={`border-t ${theme === 'dark' ? 'border-white/30' : 'border-gray-300'
+            } mb-4`} />
 
-          <p className={`mb-6 text-sm leading-relaxed ${
-            theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
-          }`}>
+          <p className={`mb-6 text-sm leading-relaxed ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+            }`}>
             Whether it's a collab, a question, or just a friendly hello, drop me a line. I read every message 💌
           </p>
 
           <a
             href="mailto:arijit123roy098@gmail.com"
-            className={`block text-center w-full ${
-              theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white'
-            } border border-gray-500 font-bold py-3 rounded-full hover:scale-95 transition-all duration-300 shadow-md`}
+            className={`block text-center w-full ${theme === 'dark'
+                ? 'bg-white text-black hover:bg-gray-200'
+                : 'bg-gradient-to-r from-blue-500 to-amber-500 text-white hover:from-blue-600 hover:to-amber-600'
+              } border border-gray-500 font-bold py-3 rounded-full hover:scale-95 transition-all duration-300 shadow-md`}
           >
             Send me an Email
           </a>
         </div>
 
         {/* Footer */}
-        <p className={`text-md mt-3 pb-5 ${
-          theme === 'dark' ? 'text-gray-600' : 'text-gray-400'
-        }`}>
+        <p className={`text-md mt-3 pb-5 ${theme === 'dark' ? 'text-gray-600' : 'text-gray-500'
+          }`}>
           Made with 💖 by arijiiiitttt
         </p>
       </div>
