@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+@font-face {
+    font-family: 'Galter';
+    src: url(/fonts/Galter/Galter.otf);
+}
+.Galter {
+    font-family: 'Galter', sans-serif;
+}
+
+@font-face {
+    font-family:'Bricolage'; 
+    src: url(/public/fonts/Bricolage\ Grotesque/BricolageGrotesque-Regular.otf);
+}
+.Bricolage {
+    font-family: 'Bricolage Grotesque', sans-serif;
+}
